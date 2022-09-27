@@ -19,3 +19,12 @@ for (var i = 0; i < numOfDrum; i++) {
     alert("I GOT CLICKED");
   });
 }
+
+var numOfDrum = document.querySelectorAll(".drum").length;
+var drums = document.querySelectorAll(".drum");
+var audio = new Audio('sounds/tom-1.mp3');
+for (var i = 0; i < numOfDrum; i++) {
+  drums[i].addEventListener("click", function() {
+    audio.play();
+  });
+}
