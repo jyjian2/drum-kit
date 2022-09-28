@@ -19,12 +19,14 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
   })
 }
 
 // Detecting keyboard press
 document.addEventListener("keypress", function(event) {
   makeSound(event.key);
+  buttonAnimation(event.key);
 })
 
 function makeSound(key) {
@@ -64,4 +66,14 @@ function makeSound(key) {
     snare.play();
     break;
   }
+}
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  // remove class pressed after few seconds: setTimeOut
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100)
 }
